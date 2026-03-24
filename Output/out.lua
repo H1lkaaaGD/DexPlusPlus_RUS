@@ -1,10 +1,11 @@
 --[[
 	Dex++
-	Version 3.0
+
+	Версия: 3.0-_U
 	
-	Developed by Chillz
+	Разработано: Chillz
 	
-	Dex++ is a revival of Moon's Dex, made to fulfill Moon's Dex prophecy.
+	Вата хел...
 ]]
 
 local selection
@@ -80,22 +81,13 @@ end
 
 local function main()
 	local Console = {}
-
 	local window,ConsoleFrame
-
-	local OutputLimit = 500 -- Same as Roblox Console.
-
-
-	-- Instances: 29 | Scripts: 1 | Modules: 1 | Tags: 0
+	local OutputLimit = 500
 	local G2L = {};
-
-	-- StarterGui.ScreenGui
 	window = Lib.Window.new()
 	window:SetTitle("Console")
 	window:Resize(500,400)
 	Console.Window = window
-
-	-- StarterGui.ScreenGui.Console
 	ConsoleFrame = Instance.new("ImageButton", window.GuiElems.Content);
 	ConsoleFrame["BorderSizePixel"] = 0;
 	ConsoleFrame["AutoButtonColor"] = false;
@@ -107,9 +99,7 @@ local function main()
 	ConsoleFrame["Name"] = [[Console]];
 	ConsoleFrame["Position"] = UDim2.new(0,0,0,0);
 
-
-	-- StarterGui.ScreenGui.Console.CommandLine
-	G2L["3"] = Lib.Frame.new().Gui--Instance.new("Frame", ConsoleFrame);
+	G2L["3"] = Lib.Frame.new().Gui
 	G2L["3"].Parent = ConsoleFrame
 	G2L["3"]["BorderSizePixel"] = 0;
 	G2L["3"]["BackgroundColor3"] = Color3.fromRGB(37, 37, 37);
@@ -120,14 +110,10 @@ local function main()
 	G2L["3"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 	G2L["3"]["Name"] = [[CommandLine]];
 
-
-	-- StarterGui.ScreenGui.Console.CommandLine.UIStroke
 	G2L["4"] = Instance.new("UIStroke", G2L["3"]);
 	G2L["4"]["Transparency"] = 0.65;
 	G2L["4"]["Thickness"] = 1.25;
 
-
-	-- StarterGui.ScreenGui.Console.CommandLine.ScrollingFrame
 	G2L["5"] = Instance.new("ScrollingFrame", G2L["3"]);
 	G2L["5"]["Active"] = true;
 	G2L["5"]["ScrollingDirection"] = Enum.ScrollingDirection.X;
@@ -145,7 +131,6 @@ local function main()
 	G2L["5"]["ScrollBarThickness"] = 2;
 	G2L["5"]["BackgroundTransparency"] = 1;
 
-	-- StarterGui.ScreenGui.Console.CommandLine.ScrollingFrame.TextBox
 	G2L["6"] = Instance.new("TextBox", G2L["5"]);
 	G2L["6"]["CursorPosition"] = -1;
 	G2L["6"]["TextXAlignment"] = Enum.TextXAlignment.Left;
@@ -163,13 +148,9 @@ local function main()
 	G2L["6"]["Text"] = [[]];
 	G2L["6"]["BackgroundTransparency"] = 1;
 
-
-	-- StarterGui.ScreenGui.Console.CommandLine.ScrollingFrame.TextBox.UIPadding
 	G2L["7"] = Instance.new("UIPadding", G2L["6"]);
 	G2L["7"]["PaddingLeft"] = UDim.new(0, 7);
 
-
-	-- StarterGui.ScreenGui.Console.CommandLine.ScrollingFrame.Highlight
 	G2L["8"] = Instance.new("TextLabel", G2L["5"]);
 	G2L["8"]["Interactable"] = false;
 	G2L["8"]["ZIndex"] = 2;
@@ -188,8 +169,6 @@ local function main()
 	G2L["8"]["AutomaticSize"] = Enum.AutomaticSize.X;
 	G2L["8"]["Name"] = [[Highlight]];
 
-
-	-- StarterGui.ScreenGui.Console.CommandLine.ScrollingFrame.Highlight.UIPadding
 	G2L["9"] = Instance.new("UIPadding", G2L["8"]);
 	G2L["9"]["PaddingLeft"] = UDim.new(0, 7);
 
@@ -210,7 +189,6 @@ local function main()
 	scrollbar.Gui.Up.ZIndex = 3
 	scrollbar.Gui.Down.ZIndex = 3
 
-	-- StarterGui.ScreenGui.Console.Output
 	G2L["a"] = Instance.new("ScrollingFrame", ConsoleFrame);
 	G2L["a"]["Active"] = true;
 	G2L["a"]["BorderSizePixel"] = 0;
@@ -238,36 +216,25 @@ local function main()
 		end
 	end)
 
-	-- StarterGui.ScreenGui.Console.Output.UIListLayout
 	G2L["b"] = Instance.new("UIListLayout", G2L["a"]);
 	G2L["b"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
 
-
-	-- StarterGui.ScreenGui.Console.Output.UIStroke
 	G2L["c"] = Instance.new("UIStroke", G2L["a"]);
 	G2L["c"]["Transparency"] = 0.7;
 	G2L["c"]["Thickness"] = 1.25;
 	G2L["c"]["Color"] = Color3.fromRGB(12, 12, 12);
 
-
-	-- StarterGui.ScreenGui.Console.Output.OutputTextSize
 	G2L["d"] = Instance.new("NumberValue", G2L["a"]);
 	G2L["d"]["Name"] = [[OutputTextSize]];
 	G2L["d"]["Value"] = 15;
 
-
-	-- StarterGui.ScreenGui.Console.Output.OutputLimit
 	G2L["e"] = Instance.new("NumberValue", G2L["a"]);
 	G2L["e"]["Name"] = [[OutputLimit]];
 	G2L["e"]["Value"] = OutputLimit;
 
-
-	-- StarterGui.ScreenGui.Console.Output.UIPadding
 	G2L["f"] = Instance.new("UIPadding", G2L["a"]);
 	G2L["f"]["PaddingTop"] = UDim.new(0, 2);
 
-
-	-- StarterGui.ScreenGui.Console.TextSizeBox
 	G2L["10"] = Instance.new("Frame", ConsoleFrame);
 	G2L["10"]["BorderSizePixel"] = 0;
 	G2L["10"]["BackgroundColor3"] = Color3.fromRGB(37, 37, 37);
@@ -277,8 +244,6 @@ local function main()
 	G2L["10"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 	G2L["10"]["Name"] = [[TextSizeBox]];
 
-
-	-- StarterGui.ScreenGui.Console.TextSizeBox.TextBox
 	G2L["11"] = Instance.new("TextBox", G2L["10"]);
 	G2L["11"]["PlaceholderColor3"] = Color3.fromRGB(108, 108, 108);
 	G2L["11"]["BorderSizePixel"] = 0;
@@ -294,22 +259,16 @@ local function main()
 	G2L["11"]["Text"] = [[]];
 	G2L["11"]["BackgroundTransparency"] = 1;
 
-
-	-- StarterGui.ScreenGui.Console.TextSizeBox.TextBox.UIPadding
 	G2L["12"] = Instance.new("UIPadding", G2L["11"]);
 	G2L["12"]["PaddingTop"] = UDim.new(0, 2);
 	G2L["12"]["PaddingRight"] = UDim.new(0, 5);
 	G2L["12"]["PaddingLeft"] = UDim.new(0, 5);
 	G2L["12"]["PaddingBottom"] = UDim.new(0, 2);
 
-
-	-- StarterGui.ScreenGui.Console.TextSizeBox.UIStroke
 	G2L["13"] = Instance.new("UIStroke", G2L["10"]);
 	G2L["13"]["Transparency"] = 0.65;
 	G2L["13"]["Thickness"] = 1.25;
 
-
-	-- StarterGui.ScreenGui.Console.Clear
 	G2L["14"] = Instance.new("ImageButton", ConsoleFrame);
 	G2L["14"]["BorderSizePixel"] = 0;
 	G2L["14"]["BackgroundColor3"] = Color3.fromRGB(57, 57, 57);
@@ -318,8 +277,6 @@ local function main()
 	G2L["14"]["Name"] = [[Clear]];
 	G2L["14"]["Position"] = UDim2.new(1, -42, 0, 4);
 
-
-	-- StarterGui.ScreenGui.Console.Clear.TextLabel
 	G2L["15"] = Instance.new("TextLabel", G2L["14"]);
 	G2L["15"]["TextWrapped"] = true;
 	G2L["15"]["Interactable"] = false;
@@ -334,14 +291,10 @@ local function main()
 	G2L["15"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 	G2L["15"]["Text"] = [[Clear]];
 
-
-	-- StarterGui.ScreenGui.Console.Clear.UIPadding
 	G2L["16"] = Instance.new("UIPadding", G2L["14"]);
 	G2L["16"]["PaddingTop"] = UDim.new(0, 1);
 	G2L["16"]["PaddingBottom"] = UDim.new(0, 1);
 
-
-	-- StarterGui.ScreenGui.Console.OutputTemplate
 	G2L["17"] = Instance.new("TextBox", ConsoleFrame);
 	G2L["17"]["Visible"] = false;
 	G2L["17"]["Active"] = false;
@@ -361,17 +314,13 @@ local function main()
 	G2L["17"]["Size"] = UDim2.new(1, 0, 0, 1);
 	G2L["17"]["Position"] = UDim2.new(0, 20, 0, 0);
 	G2L["17"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-	G2L["17"]["Text"] = [[(timestamp) <font color="rgb(255, 255, 255)">Output</font>]];
+	G2L["17"]["Text"] = [[(таймстамп) <font color="rgb(255, 255, 255)">Вывод</font>]];
 	G2L["17"]["BackgroundTransparency"] = 1;
 
-
-	-- StarterGui.ScreenGui.Console.OutputTemplate.UIPadding
 	G2L["18"] = Instance.new("UIPadding", G2L["17"]);
 	G2L["18"]["PaddingRight"] = UDim.new(0, 6);
 	G2L["18"]["PaddingLeft"] = UDim.new(0, 6);
 
-
-	-- StarterGui.ScreenGui.Console.CtrlScroll
 	G2L["19"] = Instance.new("ImageButton", ConsoleFrame);
 	G2L["19"]["BorderSizePixel"] = 0;
 	G2L["19"]["BackgroundColor3"] = Color3.fromRGB(57, 57, 57);
@@ -380,8 +329,6 @@ local function main()
 	G2L["19"]["Name"] = [[CtrlScroll]];
 	G2L["19"]["Position"] = UDim2.new(0, 46, 0, 4);
 
-
-	-- StarterGui.ScreenGui.Console.CtrlScroll.TextLabel
 	G2L["1a"] = Instance.new("TextLabel", G2L["19"]);
 	G2L["1a"]["TextWrapped"] = true;
 	G2L["1a"]["Interactable"] = false;
@@ -396,13 +343,10 @@ local function main()
 	G2L["1a"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 	G2L["1a"]["Text"] = [[Ctrl Scroll]];
 
-
-	-- StarterGui.ScreenGui.Console.CtrlScroll.UIPadding
 	G2L["1b"] = Instance.new("UIPadding", G2L["19"]);
 	G2L["1b"]["PaddingTop"] = UDim.new(0, 1);
 	G2L["1b"]["PaddingBottom"] = UDim.new(0, 1);
 
-	-- StarterGui.ScreenGui.Console.AutoScroll
 	G2L["20"] = Instance.new("ImageButton", ConsoleFrame);
 	G2L["20"]["BorderSizePixel"] = 0;
 	G2L["20"]["BackgroundColor3"] = Color3.fromRGB(57, 57, 57);
@@ -411,8 +355,6 @@ local function main()
 	G2L["20"]["Name"] = [[AutoScroll]];
 	G2L["20"]["Position"] = UDim2.new(0, 110, 0, 4);
 
-
-	-- StarterGui.ScreenGui.Console.AutoScroll.TextLabel
 	G2L["1e"] = Instance.new("TextLabel", G2L["20"]);
 	G2L["1e"]["TextWrapped"] = true;
 	G2L["1e"]["Interactable"] = false;
@@ -425,26 +367,18 @@ local function main()
 	G2L["1e"]["BackgroundTransparency"] = 1;
 	G2L["1e"]["Size"] = UDim2.new(1, 0, 1, 0);
 	G2L["1e"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-	G2L["1e"]["Text"] = [[Auto Scroll]];
+	G2L["1e"]["Text"] = [[Авто Прокручивание]];
 
-
-	-- StarterGui.ScreenGui.Console.AutoScroll.UIPadding
 	G2L["1f"] = Instance.new("UIPadding", G2L["20"]);
 	G2L["1f"]["PaddingTop"] = UDim.new(0, 1);
 	G2L["1f"]["PaddingBottom"] = UDim.new(0, 1);
 
-
-	-- StarterGui.ScreenGui.ConsoleHandler
 	G2L["1c"] = Instance.new("LocalScript", G2L["1"]);
 	G2L["1c"]["Name"] = [[ConsoleHandler]];
 
-
-	-- StarterGui.ScreenGui.ConsoleHandler.SyntaxHighlighter
 	G2L["1d"] = Instance.new("ModuleScript", G2L["1c"]);
 	G2L["1d"]["Name"] = [[SyntaxHighlighter]];
 
-
-	-- Require G2L wrapper
 	local G2L_REQUIRE = require;
 	local G2L_MODULES = {};
 	local function require(Module)
@@ -579,7 +513,7 @@ local function main()
 
 							inComment = false
 						elseif source:sub(i - 1, i) == "]]" and commentPersist then
-							currentToken ..= "]"
+							currentToken = "]" -- ..
 
 							table.insert(tokens, currentToken)
 							currentToken = ""
