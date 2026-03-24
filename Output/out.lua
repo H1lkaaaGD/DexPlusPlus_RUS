@@ -1665,7 +1665,6 @@ local function main()
 			end
 		end
 
-		context:AddRegistered("EBNUT_FIGURU_V_DORSE")
 		context:AddRegistered("CUT")
 		context:AddRegistered("COPY")
 		context:AddRegistered("PASTE", emptyClipboard)
@@ -1688,9 +1687,9 @@ local function main()
 		if env.setclipboard then context:AddRegistered("COPY_PATH") end
 		context:AddRegistered("INSERT_OBJECT")
 		context:AddRegistered("SAVE_INST")
-		-- context:AddRegistered("CALL_FUNCTION") -- не юзается
-		-- context:AddRegistered("VIEW_CONNECTIONS") -- не юзается
-		-- context:AddRegistered("GET_REFERENCES") -- не юзается
+		-- context:AddRegistered("CALL_FUNCTION")
+		-- context:AddRegistered("VIEW_CONNECTIONS")
+		-- context:AddRegistered("GET_REFERENCES")
 		context:AddRegistered("COPY_API_PAGE")
 
 		context:QueueDivider()
@@ -1754,10 +1753,6 @@ local function main()
 
 	Explorer.InitRightClick = function()
 		local context = Lib.ContextMenu.new()
-
--- GSplash Stuff
-    context:Register("EBNUT_FIGURU_V_DORSE",{Name = "Уебать Фигуру В Дорсе", IconMap = Explorer.MiscIcons, Icon = "Delete", DisabledIcon = "Delete_Disabled", Shortcut = "", OnClick = function() end})
--- GSplash Stuff End
 
 		context:Register("CUT",{Name = "Вырезать", IconMap = Explorer.MiscIcons, Icon = "Cut", DisabledIcon = "Cut_Disabled", Shortcut = "Ctrl+Z", OnClick = function()
 			local destroy,clone = game.Destroy,game.Clone
