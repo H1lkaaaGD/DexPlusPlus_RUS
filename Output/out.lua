@@ -1756,11 +1756,7 @@ local function main()
 		local context = Lib.ContextMenu.new()
 
 -- GSplash Stuff
-    context:Register("EBNUT_FIGURU_V_DORSE",{Name = "Уебать Фигуру В Дорсе", IconMap = Explorer.MiscIcons, Icon = "Delete", DisabledIcon = "Delete_Disabled", Shortcut = "", OnClick = function()
-      local Room_FT = game.workspace.CurrentRoom["50"]
-      local FigureSetup = Room_FT:FindForChild("FigureSetup")
-      FigureSetup.FigureRig:Destroy()
-		end})
+    context:Register("EBNUT_FIGURU_V_DORSE",{Name = "Уебать Фигуру В Дорсе", IconMap = Explorer.MiscIcons, Icon = "Delete", DisabledIcon = "Delete_Disabled", Shortcut = "", OnClick = function() end})
 -- GSplash Stuff End
 
 		context:Register("CUT",{Name = "Вырезать", IconMap = Explorer.MiscIcons, Icon = "Cut", DisabledIcon = "Cut_Disabled", Shortcut = "Ctrl+Z", OnClick = function()
