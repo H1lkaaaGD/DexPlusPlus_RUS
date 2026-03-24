@@ -1771,7 +1771,7 @@ local function main()
 			selection:Clear()
 		end})
 
-		context:Register("COPY",{Name = "Copy", IconMap = Explorer.MiscIcons, Icon = "Copy", DisabledIcon = "Copy_Disabled", Shortcut = "Ctrl+C", OnClick = function()
+		context:Register("COPY",{Name = "Копировать", IconMap = Explorer.MiscIcons, Icon = "Copy", DisabledIcon = "Copy_Disabled", Shortcut = "Ctrl+C", OnClick = function()
 			local clone = game.Clone
 			local sList,newClipboard = selection.List,{}
 			local count = 1
@@ -1786,7 +1786,7 @@ local function main()
 			clipboard = newClipboard
 		end})
 
-		context:Register("PASTE",{Name = "Paste Into", IconMap = Explorer.MiscIcons, Icon = "Paste", DisabledIcon = "Paste_Disabled", Shortcut = "Ctrl+Shift+V", OnClick = function()
+		context:Register("PASTE",{Name = "Втавить в", IconMap = Explorer.MiscIcons, Icon = "Paste", DisabledIcon = "Paste_Disabled", Shortcut = "Ctrl+Shift+V", OnClick = function()
 			local sList = selection.List
 			local newSelection = {}
 			local count = 1
