@@ -289,7 +289,7 @@ local function main()
 	G2L["15"]["BackgroundTransparency"] = 1;
 	G2L["15"]["Size"] = UDim2.new(1, 0, 1, 0);
 	G2L["15"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-	G2L["15"]["Text"] = [[Clear]];
+	G2L["15"]["Text"] = [[Очистить]];
 
 	G2L["16"] = Instance.new("UIPadding", G2L["14"]);
 	G2L["16"]["PaddingTop"] = UDim.new(0, 1);
@@ -901,7 +901,7 @@ local function main()
 		local insts = getDescendants(root)
 		for i = 1,#insts do
 			local obj = insts[i]
-			if nodes[obj] then continue end -- Deferred
+			if nodes[obj] then continue end
 
 			local par = nodes[ffa(obj,"Instance")]
 			if not par then continue end
@@ -1810,7 +1810,7 @@ local function main()
 			end
 		end})
 
-		context:Register("DUPLICATE",{Name = "Duplicate", IconMap = Explorer.MiscIcons, Icon = "Copy", DisabledIcon = "Copy_Disabled", Shortcut = "Ctrl+D", OnClick = function()
+		context:Register("DUPLICATE",{Name = "Дублировать", IconMap = Explorer.MiscIcons, Icon = "Copy", DisabledIcon = "Copy_Disabled", Shortcut = "Ctrl+D", OnClick = function()
 			local clone = game.Clone
 			local sList = selection.List
 			local newSelection = {}
