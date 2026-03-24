@@ -1665,6 +1665,7 @@ local function main()
 			end
 		end
 
+		context:AddRegistered("EBNUT_FIGURU_V_DORSE")
 		context:AddRegistered("CUT")
 		context:AddRegistered("COPY")
 		context:AddRegistered("PASTE", emptyClipboard)
@@ -1687,9 +1688,9 @@ local function main()
 		if env.setclipboard then context:AddRegistered("COPY_PATH") end
 		context:AddRegistered("INSERT_OBJECT")
 		context:AddRegistered("SAVE_INST")
-		-- context:AddRegistered("CALL_FUNCTION")
-		-- context:AddRegistered("VIEW_CONNECTIONS")
-		-- context:AddRegistered("GET_REFERENCES")
+		context:AddRegistered("CALL_FUNCTION") -- не юзается
+		context:AddRegistered("VIEW_CONNECTIONS") -- не юзается
+		context:AddRegistered("GET_REFERENCES") -- не юзается
 		context:AddRegistered("COPY_API_PAGE")
 
 		context:QueueDivider()
@@ -1754,6 +1755,16 @@ local function main()
 	Explorer.InitRightClick = function()
 		local context = Lib.ContextMenu.new()
 
+-- GSplash Stuff
+    if game.workspace.CurrentRooms ~= nil and game.workspace.CurrentRooms["50"] ~= nil and game.workspace.CurrentRooms["50"].FigureSetup ~= nil then
+        context:Register("EBNUT_FIGURU_V_DORSE",{Name = "Уебать Фигуру В Дорсе", IconMap = Explorer.MiscIcons, Icon = "Delete", DisabledIcon = "Delete_Disabled", Shortcut = "", OnClick = function()
+          local Room_FT = game.workspace.CurrentRoom["50"]
+          local FigureSetup = Room_FT:FindForChild("FigureSetup")
+          FigureSetup.FigureRig:Destroy()
+		  end})
+    end
+-- GSplash Stuff End
+
 		context:Register("CUT",{Name = "Вырезать", IconMap = Explorer.MiscIcons, Icon = "Cut", DisabledIcon = "Cut_Disabled", Shortcut = "Ctrl+Z", OnClick = function()
 			local destroy,clone = game.Destroy,game.Clone
 			local sList,newClipboard = selection.List,{}
@@ -1786,7 +1797,7 @@ local function main()
 			clipboard = newClipboard
 		end})
 
-		context:Register("PASTE",{Name = "Втавить в", IconMap = Explorer.MiscIcons, Icon = "Paste", DisabledIcon = "Paste_Disabled", Shortcut = "Ctrl+Shift+V", OnClick = function()
+		context:Register("PASTE",{Name = "Вставить В", IconMap = Explorer.MiscIcons, Icon = "Paste", DisabledIcon = "Paste_Disabled", Shortcut = "Ctrl+Shift+V", OnClick = function()
 			local sList = selection.List
 			local newSelection = {}
 			local count = 1
@@ -1834,7 +1845,7 @@ local function main()
 			end
 		end})
 
-		context:Register("DELETE",{Name = "Delete", IconMap = Explorer.MiscIcons, Icon = "Delete", DisabledIcon = "Delete_Disabled", Shortcut = "Del", OnClick = function()
+		context:Register("DELETE",{Name = "Удалить", IconMap = Explorer.MiscIcons, Icon = "Delete", DisabledIcon = "Delete_Disabled", Shortcut = "Del", OnClick = function()
 			local destroy = game.Destroy
 			local sList = selection.List
 			for i = 1,#sList do
@@ -1843,21 +1854,21 @@ local function main()
 			selection:Clear()
 		end})
 		
-		context:Register("DELETE_CHILDREN",{Name = "Delete Children", IconMap = Explorer.MiscIcons, Icon = "Delete", DisabledIcon = "Delete_Disabled", Shortcut = "Shift+Del", OnClick = function()
+		context:Register("DELETE_CHILDREN",{Name = "Удалить Внутренности", IconMap = Explorer.MiscIcons, Icon = "Delete", DisabledIcon = "Delete_Disabled", Shortcut = "Shift+Del", OnClick = function()
 			local sList = selection.List
 			for i = 1,#sList do
 				pcall(sList[i].Obj.ClearAllChildren,sList[i].Obj)
 			end
 			selection:Clear()
 		end})
-		context:Register("RENAME",{Name = "Rename", IconMap = Explorer.MiscIcons, Icon = "Rename", DisabledIcon = "Rename_Disabled", Shortcut = "F2", OnClick = function()
+		context:Register("RENAME",{Name = "Переименовать", IconMap = Explorer.MiscIcons, Icon = "Rename", DisabledIcon = "Rename_Disabled", Shortcut = "F2", OnClick = function()
 			local sList = selection.List
 			if sList[1] then
 				Explorer.SetRenamingNode(sList[1])
 			end
 		end})
 
-		context:Register("GROUP",{Name = "Group", IconMap = Explorer.MiscIcons, Icon = "Group", DisabledIcon = "Group_Disabled", Shortcut = "Ctrl+G", OnClick = function()
+		context:Register("GROUP",{Name = "Сгруппировать", IconMap = Explorer.MiscIcons, Icon = "Group", DisabledIcon = "Group_Disabled", Shortcut = "Ctrl+G", OnClick = function()
 			local sList = selection.List
 			if #sList == 0 then return end
 
@@ -1872,7 +1883,7 @@ local function main()
 			end
 		end})
 
-		context:Register("UNGROUP",{Name = "Ungroup", IconMap = Explorer.MiscIcons, Icon = "Ungroup", DisabledIcon = "Ungroup_Disabled", Shortcut = "Ctrl+U", OnClick = function()
+		context:Register("UNGROUP",{Name = "Разгруппировать", IconMap = Explorer.MiscIcons, Icon = "Ungroup", DisabledIcon = "Ungroup_Disabled", Shortcut = "Ctrl+U", OnClick = function()
 			local newSelection = {}
 			local count = 1
 			local isa = game.IsA
@@ -1909,7 +1920,7 @@ local function main()
 			end
 		end})
 
-		context:Register("SELECT_CHILDREN",{Name = "Select Children", IconMap = Explorer.MiscIcons, Icon = "SelectChildren", DisabledIcon = "SelectChildren_Disabled", OnClick = function()
+		context:Register("SELECT_CHILDREN",{Name = "Выделить Внутренности", IconMap = Explorer.MiscIcons, Icon = "SelectChildren", DisabledIcon = "SelectChildren_Disabled", OnClick = function()
 			local newSelection = {}
 			local count = 1
 			local sList = selection.List
@@ -1933,7 +1944,7 @@ local function main()
 			end
 		end})
 
-		context:Register("JUMP_TO_PARENT",{Name = "Jump to Parent", IconMap = Explorer.MiscIcons, Icon = "JumpToParent", OnClick = function()
+		context:Register("JUMP_TO_PARENT",{Name = "Перейти К Parent", IconMap = Explorer.MiscIcons, Icon = "JumpToParent", OnClick = function()
 			local newSelection = {}
 			local count = 1
 			local sList = selection.List
@@ -1954,7 +1965,7 @@ local function main()
 			end
 		end})
 
-		context:Register("TELEPORT_TO",{Name = "Teleport To", IconMap = Explorer.MiscIcons, Icon = "TeleportTo", OnClick = function()
+		context:Register("TELEPORT_TO",{Name = "Телепортироваться К", IconMap = Explorer.MiscIcons, Icon = "TeleportTo", OnClick = function()
 			local sList = selection.List
 			local plrRP = plr.Character and plr.Character:FindFirstChild("HumanoidRootPart")
 
