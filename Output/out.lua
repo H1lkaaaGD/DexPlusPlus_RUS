@@ -1754,7 +1754,7 @@ local function main()
 	Explorer.InitRightClick = function()
 		local context = Lib.ContextMenu.new()
 
-		context:Register("CUT",{Name = "Cut", IconMap = Explorer.MiscIcons, Icon = "Cut", DisabledIcon = "Cut_Disabled", Shortcut = "Ctrl+Z", OnClick = function()
+		context:Register("CUT",{Name = "Вырезать", IconMap = Explorer.MiscIcons, Icon = "Cut", DisabledIcon = "Cut_Disabled", Shortcut = "Ctrl+Z", OnClick = function()
 			local destroy,clone = game.Destroy,game.Clone
 			local sList,newClipboard = selection.List,{}
 			local count = 1
