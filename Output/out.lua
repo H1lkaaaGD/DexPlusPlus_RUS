@@ -1688,9 +1688,9 @@ local function main()
 		if env.setclipboard then context:AddRegistered("COPY_PATH") end
 		context:AddRegistered("INSERT_OBJECT")
 		context:AddRegistered("SAVE_INST")
-		context:AddRegistered("CALL_FUNCTION") -- не юзается
-		context:AddRegistered("VIEW_CONNECTIONS") -- не юзается
-		context:AddRegistered("GET_REFERENCES") -- не юзается
+		-- context:AddRegistered("CALL_FUNCTION") -- не юзается
+		-- context:AddRegistered("VIEW_CONNECTIONS") -- не юзается
+		-- context:AddRegistered("GET_REFERENCES") -- не юзается
 		context:AddRegistered("COPY_API_PAGE")
 
 		context:QueueDivider()
