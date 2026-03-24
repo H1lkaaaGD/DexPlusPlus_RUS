@@ -3525,7 +3525,7 @@ local function main()
 				if evalEntities then
 					local pos = s:find('<[_%w]')
 					if pos then
-						s:sub(1, pos):gsub('<!ENTITY%s+([_%w]+)%s+(.)(.-)%2', function(name, q, entity)
+						s:sub(1, pos):gsub('<!ЭНТИТИ%s+([_%w]+)%s+(.)(.-)%2', function(name, q, entity)
 							entities[#entities+1] = {name=name, value=entity}
 						end)
 						tentities = createEntityTable(entities)
@@ -3806,12 +3806,12 @@ local function main()
 			win = Lib.Window.new()
 			win.Alignable = false
 			win.Resizable = false
-			win:SetTitle("Save As")
+			win:SetTitle("Сохранить Как")
 			win:SetSize(300,95)
 
 			local saveButton = Lib.Button.new()
 			local nameLabel = Lib.Label.new()
-			nameLabel.Text = "Name"
+			nameLabel.Text = "Имя"
 			nameLabel.Position = UDim2.new(0,30,0,10)
 			nameLabel.Size = UDim2.new(0,40,0,20)
 			win:Add(nameLabel)
@@ -3837,7 +3837,7 @@ local function main()
 
 			local cancelButton = Lib.Button.new()
 			cancelButton.AnchorPoint = Vector2.new(1,1)
-			cancelButton.Text = "Cancel"
+			cancelButton.Text = "Отмена"
 			cancelButton.Position = UDim2.new(1,-5,1,-5)
 			cancelButton.Size = UDim2.new(0.5,-10,0,20)
 			cancelButton.OnClick:Connect(function()
@@ -3845,7 +3845,7 @@ local function main()
 			end)
 			win:Add(cancelButton)
 
-			saveButton.Text = "Save"
+			saveButton.Text = "Сохранить"
 			saveButton.AnchorPoint = Vector2.new(0,1)
 			saveButton.Position = UDim2.new(0,5,1,-5)
 			saveButton.Size = UDim2.new(0.5,-5,0,20)
@@ -3868,12 +3868,12 @@ local function main()
 				if env.writefile then
 					local s, msg = pcall(env.writefile, filename, codeText)
 					if not s then
-						win.Elements.Error.Text = "Error: " .. msg
+						win.Elements.Error.Text = "Ощибкоооо: " .. msg
 						task.spawn(error, msg)
 						task.wait(1)
 					end
 				else
-					win.Elements.Error.Text = "Your executor does not support 'writefile'"
+					win.Elements.Error.Text = "Твой ебанутый чит не поддерживает 'writefile'"
 					task.wait(1)
 				end
 			elseif type(codeToSave) == "function" then
@@ -3883,7 +3883,7 @@ local function main()
 
 				local s, msg = pcall(codeToSave,filename) -- callback
 				if not s then
-					win.Elements.Error.Text = "Error: " .. msg
+					win.Elements.Error.Text = "Ощибкоооо: " .. msg
 					task.spawn(error, msg)
 					Lib.FastWait(1)
 				end
@@ -3891,7 +3891,7 @@ local function main()
 			win:Close()
 		end
 
-		win:SetTitle("Save As")
+		win:SetTitle("Сохранить Как")
 		win.Elements.Error.Text = ""
 		win.Elements.NameBox:SetText(filename or "")
 		
@@ -3930,7 +3930,7 @@ local function main()
 		local mt = {
 			__index = funcs,
 			__tostring = function(self)
-				return "Signal: " .. tostring(#self.Connections) .. " Connections"
+				return "Сигнал: " .. tostring(#self.Connections) .. " Конекшенс"
 			end
 		}
 
@@ -5905,7 +5905,7 @@ local function main()
 				--[[background mod set to 0.05]]	{3,"Frame",{BackgroundColor3=Color3.new(0.17647059261799,0.17647059261799,0.17647059261799),BorderSizePixel=0,Name="Content",Parent={2},Position=UDim2.new(0,0,0,20),Size=UDim2.new(1,0,1,-20),ClipsDescendants=true}},
 				{4,"Frame",{BackgroundColor3=Color3.fromRGB(33,33,33),BorderSizePixel=0,Name="Line",Parent={3},Size=UDim2.new(1,0,0,1),}},
 				{5,"TextButton",{AutoButtonColor=false,BackgroundColor3=Color3.new(0.20392157137394,0.20392157137394,0.20392157137394),BorderSizePixel=0,Name="TopBar",Parent={2},Size=UDim2.new(1,0,0,20),Text = ""}},
-				{6,"TextLabel",{BackgroundColor3=Color3.new(1,1,1),BackgroundTransparency=1,Font=3,Name="Title",Parent={5},Position=UDim2.new(0,5,0,0),Size=UDim2.new(1,-10,0,20),Text="Window",TextColor3=Color3.new(1,1,1),TextSize=14,TextXAlignment=0}},
+				{6,"TextLabel",{BackgroundColor3=Color3.new(1,1,1),BackgroundTransparency=1,Font=3,Name="Title",Parent={5},Position=UDim2.new(0,5,0,0),Size=UDim2.new(1,-10,0,20),Text="Окно",TextColor3=Color3.new(1,1,1),TextSize=14,TextXAlignment=0}},
 				{7,"TextButton",{AutoButtonColor=false,BackgroundColor3=Color3.new(0.12549020349979,0.12549020349979,0.12549020349979),BackgroundTransparency=1,BorderSizePixel=0,Font=3,Name="Close",Parent={5},Position=UDim2.new(1,-18,0,2),Size=UDim2.new(0,16,0,16),Text="",TextColor3=Color3.new(1,1,1),TextSize=14,}},
 				{8,"ImageLabel",{BackgroundColor3=Color3.new(1,1,1),BackgroundTransparency=1,Image="rbxassetid://5054663650",Parent={7},Position=UDim2.new(0,3,0,3),Size=UDim2.new(0,10,0,10),}},
 				{9,"UICorner",{CornerRadius=UDim.new(0,4),Parent={7},}},
@@ -6814,7 +6814,7 @@ local function main()
 				{11,"UICorner",{CornerRadius=UDim.new(0,2),Parent={9},}},
 				{12,"Frame",{BackgroundColor3=Color3.new(0.14117647707462,0.14117647707462,0.14117647707462),BorderSizePixel=0,Name="Line",Parent={8},Position=UDim2.new(0,0,1,0),Size=UDim2.new(1,0,0,1),}},
 				{13,"TextButton",{AutoButtonColor=false,BackgroundColor3=Color3.new(0.20392157137394,0.20392157137394,0.20392157137394),BackgroundTransparency=1,BorderColor3=Color3.new(0.33725491166115,0.49019610881805,0.73725491762161),BorderSizePixel=0,Font=3,Name="Entry",Parent={1},Size=UDim2.new(1,0,0,22),Text="",TextSize=14,Visible=false,}},
-				{14,"TextLabel",{BackgroundColor3=Color3.new(1,1,1),BackgroundTransparency=1,BorderSizePixel=0,Font=3,Name="EntryName",Parent={13},Position=UDim2.new(0,24,0,0),Size=UDim2.new(1,-24,1,0),Text="Duplicate",TextColor3=Color3.new(0.86274516582489,0.86274516582489,0.86274516582489),TextSize=14,TextXAlignment=0,}},
+				{14,"TextLabel",{BackgroundColor3=Color3.new(1,1,1),BackgroundTransparency=1,BorderSizePixel=0,Font=3,Name="EntryName",Parent={13},Position=UDim2.new(0,24,0,0),Size=UDim2.new(1,-24,1,0),Text="Дублировать",TextColor3=Color3.new(0.86274516582489,0.86274516582489,0.86274516582489),TextSize=14,TextXAlignment=0,}},
 				{15,"TextLabel",{BackgroundColor3=Color3.new(1,1,1),BackgroundTransparency=1,Font=3,Name="Shortcut",Parent={13},Position=UDim2.new(0,24,0,0),Size=UDim2.new(1,-30,1,0),Text="Ctrl+D",TextColor3=Color3.new(0.86274516582489,0.86274516582489,0.86274516582489),TextSize=14,TextXAlignment=1,}},
 				{16,"ImageLabel",{BackgroundColor3=Color3.new(1,1,1),BackgroundTransparency=1,ImageRectOffset=Vector2.new(304,0),ImageRectSize=Vector2.new(16,16),Name="Icon",Parent={13},Position=UDim2.new(0,2,0,3),ScaleType=4,Size=UDim2.new(0,16,0,16),}},
 				{17,"UICorner",{CornerRadius=UDim.new(0,4),Parent={13},}},
